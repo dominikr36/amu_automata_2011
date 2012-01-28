@@ -401,8 +401,7 @@ public class TestDeterministicAutomaton extends TestCase {
         assertTrue(spec.isFinal(q1c));
         
         //test 4
-	public final void testAutomatonSpecification (){
-
+public final void testPodzielne25() {
         final AutomatonSpecification spec = new NaiveAutomatonSpecification();
 
         State q0d = spec.addState();
