@@ -401,7 +401,6 @@ public class TestDeterministicAutomaton extends TestCase {
         assertTrue(spec.isFinal(q1c));
         
         //test 4
-
         State q0d = spec.addState();
         State q1d = spec.addState();
         State q2d = spec.addState();
@@ -423,8 +422,6 @@ public class TestDeterministicAutomaton extends TestCase {
 
         spec.markAsInitial(q0d);
         spec.markAsFinal(q6d);
-
-        final DeterministicAutomaton automaton = new DeterministicAutomaton(spec);
 
         assertTrue(automaton.accepts("25"));
         assertTrue(automaton.accepts("50"));
