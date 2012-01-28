@@ -405,7 +405,6 @@ public class TestDeterministicAutomaton extends TestCase {
      * Test dla liczb podzielnych przez 25.
      */
   public final void testAutomatonDivision (){
-
         DeterministicAutomatonSpecification divi = new NaiveDeterministicAutomatonSpecification();
 
         State q0d = divi.addState();
@@ -416,7 +415,7 @@ public class TestDeterministicAutomaton extends TestCase {
 	State q5d = divi.addState();
 	State q6d = divi.addState();
 
-	divi.addTransition(q0d, q0d, new CharTransitionLabel('0'));
+	//divi.addTransition(q0d, q0d, new CharTransitionLabel('0'));
         divi.addTransition(q0d, q1d, new CharTransitionLabel('1'));
         divi.addTransition(q1d, q2d, new CharTransitionLabel('0'));
         divi.addTransition(q2d, q2d, new CharTransitionLabel('0'));
