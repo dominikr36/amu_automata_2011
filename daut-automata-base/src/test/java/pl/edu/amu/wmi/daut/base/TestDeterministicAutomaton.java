@@ -405,27 +405,27 @@ public class TestDeterministicAutomaton extends TestCase {
 
         final AutomatonSpecification spec = new NaiveAutomatonSpecification();
 
-        State q0a = spec.addState();
-        State q1a = spec.addState();
-        State q2a = spec.addState();
-	State q3a = spec.addState();
-	State q4a = spec.addState();
-	State q5a = spec.addState();
-	State q6a = spec.addState();
+        State q0d = spec.addState();
+        State q1d = spec.addState();
+        State q2d = spec.addState();
+	State q3d = spec.addState();
+	State q4d = spec.addState();
+	State q5d = spec.addState();
+	State q6d = spec.addState();
 
-	spec.addTransition(q0a, q0a, new CharTransitionLabel('0'));
-        spec.addTransition(q0a, q1a, new CharTransitionLabel('1'));
-        spec.addTransition(q1a, q2a, new CharTransitionLabel('0'));
-        spec.addTransition(q2a, q2a, new CharTransitionLabel('0'));
-  	spec.addTransition(q0a, q3a, new CharTransitionLabel('5'));
-	spec.addTransition(q3a, q4a, new CharTransitionLabel('0'));
-        spec.addTransition(q0a, q5a, new CharTransitionLabel('2'));
-        spec.addTransition(q0a, q6a, new CharTransitionLabel('7'));
-        spec.addTransition(q5a, q5a, new CharTransitionLabel('5'));
- 	spec.addTransition(q6a, q5a, new CharTransitionLabel('5'));
+	spec.addTransition(q0d, q0d, new CharTransitionLabel('0'));
+        spec.addTransition(q0d, q1d, new CharTransitionLabel('1'));
+        spec.addTransition(q1d, q2d, new CharTransitionLabel('0'));
+        spec.addTransition(q2d, q2d, new CharTransitionLabel('0'));
+  	spec.addTransition(q0d, q3d, new CharTransitionLabel('5'));
+	spec.addTransition(q3d, q4d, new CharTransitionLabel('0'));
+        spec.addTransition(q0d, q5d, new CharTransitionLabel('2'));
+        spec.addTransition(q0d, q6d, new CharTransitionLabel('7'));
+        spec.addTransition(q5d, q5d, new CharTransitionLabel('5'));
+ 	spec.addTransition(q6d, q5d, new CharTransitionLabel('5'));
 
-        spec.markAsInitial(q0a);
-        spec.markAsFinal(q6a);
+        spec.markAsInitial(q0d);
+        spec.markAsFinal(q6d);
 
         final DeterministicAutomaton automaton = new DeterministicAutomaton(spec);
 
