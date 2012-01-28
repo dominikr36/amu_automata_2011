@@ -406,44 +406,44 @@ public class TestDeterministicAutomaton extends TestCase {
      */
 public final void testAutomatonDivision (){
 
-        final AutomatonSpecification spec = new NaiveAutomatonSpecification();
+        AutomatonSpecification divi = new NaiveAutomatonSpecification();
 
-        State q0d = spec.addState();
-        State q1d = spec.addState();
-        State q2d = spec.addState();
-	State q3d = spec.addState();
-	State q4d = spec.addState();
-	State q5d = spec.addState();
-	State q6d = spec.addState();
+        State q0d = divi.addState();
+        State q1d = divi.addState();
+        State q2d = divi.addState();
+	State q3d = divi.addState();
+	State q4d = divi.addState();
+	State q5d = divi.addState();
+	State q6d = divi.addState();
 
-	spec.addTransition(q0d, q0d, new CharTransitionLabel('0'));
-        spec.addTransition(q0d, q1d, new CharTransitionLabel('1'));
-        spec.addTransition(q1d, q2d, new CharTransitionLabel('0'));
-        spec.addTransition(q2d, q2d, new CharTransitionLabel('0'));
-  	spec.addTransition(q0d, q3d, new CharTransitionLabel('5'));
-	spec.addTransition(q3d, q4d, new CharTransitionLabel('0'));
-        spec.addTransition(q0d, q5d, new CharTransitionLabel('2'));
-        spec.addTransition(q0d, q6d, new CharTransitionLabel('7'));
-        spec.addTransition(q5d, q5d, new CharTransitionLabel('5'));
- 	spec.addTransition(q6d, q5d, new CharTransitionLabel('5'));
+	divi.addTransition(q0d, q0d, new CharTransitionLabel('0'));
+        divi.addTransition(q0d, q1d, new CharTransitionLabel('1'));
+        divi.addTransition(q1d, q2d, new CharTransitionLabel('0'));
+        divi.addTransition(q2d, q2d, new CharTransitionLabel('0'));
+  	divi.addTransition(q0d, q3d, new CharTransitionLabel('5'));
+	divi.addTransition(q3d, q4d, new CharTransitionLabel('0'));
+        divi.addTransition(q0d, q5d, new CharTransitionLabel('2'));
+        divi.addTransition(q0d, q6d, new CharTransitionLabel('7'));
+        divi.addTransition(q5d, q5d, new CharTransitionLabel('5'));
+ 	divi.addTransition(q6d, q5d, new CharTransitionLabel('5'));
 
-        spec.markAsInitial(q0d);
-        spec.markAsFinal(q6d);
+        divi.markAsInitial(q0d);
+        divi.markAsFinal(q6d);
 
-        DeterministicAutomaton automaton = new DeterministicAutomaton(spec);
+        DeterministicAutomaton divipotw = new DeterministicAutomaton(spec);
 
-        assertTrue(automaton.accepts("25"));
-        assertTrue(automaton.accepts("50"));
-        assertTrue(automaton.accepts("75"));
-        assertTrue(automaton.accepts("100"));
-        assertTrue(automaton.accepts("0125"));
-        assertTrue(automaton.accepts("025"));
-	assertTrue(automaton.accepts("025"));
-        assertFalse(automaton.accepts("00"));
-        assertFalse(automaton.accepts("123"));
-        assertFalse(automaton.accepts("05"));
-        assertFalse(automaton.accepts("121"));
-        assertFalse(automaton.accepts("251"));
+        assertTrue(divipotw.accepts("25"));
+        assertTrue(divipotw.accepts("50"));
+        assertTrue(divipotw.accepts("75"));
+        assertTrue(divipotw.accepts("100"));
+        assertTrue(divipotw.accepts("0125"));
+        assertTrue(divipotw.accepts("025"));
+	assertTrue(divipotw.accepts("025"));
+        assertFalse(divipotw.accepts("00"));
+        assertFalse(divipotw.accepts("123"));
+        assertFalse(divipotw.accepts("05"));
+        assertFalse(divipotw.accepts("121"));
+        assertFalse(divipotw.accepts("251"));
 	}
 
     }
