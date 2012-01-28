@@ -400,9 +400,12 @@ public class TestDeterministicAutomaton extends TestCase {
         spec.unmarkAsFinalState(q3c);
         assertTrue(spec.isFinal(q1c));
         
-        //test 4
-public final void testPodzielne25() {
-        final AutomatonSpecification spec = new NaiveAutomatonSpecification();
+                
+   /**
+     * Test dla liczb podzielnych przez 25.
+     */
+    public final void testPodzielne25() {
+        DeterministicAutomatonSpecification spec = new NaiveDeterministicAutomatonSpecification();
 
         State q0d = spec.addState();
         State q1d = spec.addState();
