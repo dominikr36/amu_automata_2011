@@ -404,7 +404,8 @@ public class TestDeterministicAutomaton extends TestCase {
    /**
      * Test dla liczb podzielnych przez 25.
      */
-    public final void testPodzielne25() {
+    public final void testDel() {
+
         DeterministicAutomatonSpecification spec = new NaiveDeterministicAutomatonSpecification();
 
         State q0d = spec.addState();
