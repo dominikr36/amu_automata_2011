@@ -399,6 +399,45 @@ public class TestDeterministicAutomaton extends TestCase {
 
         spec.unmarkAsFinalState(q3c);
         assertTrue(spec.isFinal(q1c));
+        
+        //test 4
+
+        State q0d = spec.addState();
+        State q1d = spec.addState();
+        State q2d = spec.addState();
+        State q3d = spec.addState();
+	    State q4d = spec.addState();
+	    State q5d = spec.addState();
+	    State q6d = spec.addState();
+
+	    spec.addTransition(q0d, q0d, new CharTransitionLabel('0'));
+        spec.addTransition(q0d, q1d, new CharTransitionLabel('1'));
+        spec.addTransition(q1d, q2d, new CharTransitionLabel('0'));
+        spec.addTransition(q2d, q2d, new CharTransitionLabel('0'));
+    	spec.addTransition(q0d, q3d, new CharTransitionLabel('5'));
+    	spec.addTransition(q3d, q4d, new CharTransitionLabel('0'));
+        spec.addTransition(q0d, q5d, new CharTransitionLabel('2'));
+        spec.addTransition(q0d, q6d, new CharTransitionLabel('7'));
+        spec.addTransition(q5d, q5d, new CharTransitionLabel('5'));
+    	spec.addTransition(q6d, q5d, new CharTransitionLabel('5'));
+
+        spec.markAsInitial(q0a);
+        spec.markAsFinal(q6a);
+
+        final DeterministicAutomaton automaton = new DeterministicAutomaton(spec);
+
+        assertTrue(automaton.accepts("25"));
+        assertTrue(automaton.accepts("50"));
+        assertTrue(automaton.accepts("75"));
+        assertTrue(automaton.accepts("100"));
+        assertTrue(automaton.accepts("0125"));
+        assertTrue(automaton.accepts("025"));
+	    assertTrue(automaton.accepts("025"));
+        assertFalse(automaton.accepts("00"));
+        assertFalse(automaton.accepts("123"));
+        assertFalse(automaton.accepts("05"));
+        assertFalse(automaton.accepts("121"));
+        assertFalse(automaton.accepts("251"));
     }
 
 }
