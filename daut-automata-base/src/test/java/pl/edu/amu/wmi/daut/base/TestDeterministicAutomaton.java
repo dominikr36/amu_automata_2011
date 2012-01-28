@@ -421,8 +421,8 @@ public class TestDeterministicAutomaton extends TestCase {
         spec.addTransition(q5d, q5d, new CharTransitionLabel('5'));
     	spec.addTransition(q6d, q5d, new CharTransitionLabel('5'));
 
-        spec.markAsInitial(q0a);
-        spec.markAsFinal(q6a);
+        spec.markAsInitial(q0d);
+        spec.markAsFinal(q6d);
 
         final DeterministicAutomaton automaton = new DeterministicAutomaton(spec);
 
