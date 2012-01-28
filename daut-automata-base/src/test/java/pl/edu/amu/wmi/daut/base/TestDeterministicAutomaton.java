@@ -406,7 +406,7 @@ public class TestDeterministicAutomaton extends TestCase {
      */
   public final void testAutomatonDivision (){
 
-        DeterministicAutomatonSpecification divi = new aiveDeterministicAutomatonSpecification();
+        DeterministicAutomatonSpecification divi = new NaiveDeterministicAutomatonSpecification();
 
         State q0d = divi.addState();
         State q1d = divi.addState();
@@ -430,7 +430,7 @@ public class TestDeterministicAutomaton extends TestCase {
         divi.markAsInitial(q0d);
         divi.markAsFinal(q6d);
 
-        DeterministicAutomaton divipotw = new DeterministicAutomaton(spec);
+        DeterministicAutomaton divipotw = new DeterministicAutomaton(divi);
         
         assertTrue(divipotw.accepts("25"));
         assertTrue(divipotw.accepts("50"));
