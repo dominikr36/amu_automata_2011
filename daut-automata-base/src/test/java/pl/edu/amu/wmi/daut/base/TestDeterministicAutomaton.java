@@ -406,11 +406,11 @@ public class TestDeterministicAutomaton extends TestCase {
         State q1d = spec.addState();
         State q2d = spec.addState();
         State q3d = spec.addState();
-	    State q4d = spec.addState();
-	    State q5d = spec.addState();
-	    State q6d = spec.addState();
+	State q4d = spec.addState();
+	State q5d = spec.addState();
+	State q6d = spec.addState();
 
-	    spec.addTransition(q0d, q0d, new CharTransitionLabel('0'));
+	spec.addTransition(q0d, q0d, new CharTransitionLabel('0'));
         spec.addTransition(q0d, q1d, new CharTransitionLabel('1'));
         spec.addTransition(q1d, q2d, new CharTransitionLabel('0'));
         spec.addTransition(q2d, q2d, new CharTransitionLabel('0'));
@@ -432,7 +432,7 @@ public class TestDeterministicAutomaton extends TestCase {
         assertTrue(automaton.accepts("100"));
         assertTrue(automaton.accepts("0125"));
         assertTrue(automaton.accepts("025"));
-	    assertTrue(automaton.accepts("025"));
+	assertTrue(automaton.accepts("025"));
         assertFalse(automaton.accepts("00"));
         assertFalse(automaton.accepts("123"));
         assertFalse(automaton.accepts("05"));
