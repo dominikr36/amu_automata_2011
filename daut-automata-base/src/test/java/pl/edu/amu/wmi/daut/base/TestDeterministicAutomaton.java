@@ -401,27 +401,33 @@ public class TestDeterministicAutomaton extends TestCase {
         assertTrue(spec.isFinal(q1c));
         
         //test 4
-        State q0 = spec.addState();
-        State q1 = spec.addState();
-        State q2 = spec.addState();
-        State q3 = spec.addState();
-	State q4 = spec.addState();
-	State q5 = spec.addState();
-	State q6 = spec.addState();
+	public final void testAutomatonSpecification (){
 
-	spec.addTransition(q0, q0, new CharTransitionLabel('0'));
-        spec.addTransition(q0, q1, new CharTransitionLabel('1'));
-        spec.addTransition(q1, q2, new CharTransitionLabel('0'));
-        spec.addTransition(q2, q2, new CharTransitionLabel('0'));
-    	spec.addTransition(q0, q3, new CharTransitionLabel('5'));
-    	spec.addTransition(q3, q4, new CharTransitionLabel('0'));
-        spec.addTransition(q0, q5, new CharTransitionLabel('2'));
-        spec.addTransition(q0, q6, new CharTransitionLabel('7'));
-        spec.addTransition(q5, q5, new CharTransitionLabel('5'));
-    	spec.addTransition(q6, q5, new CharTransitionLabel('5'));
+        final AutomatonSpecification spec = new NaiveAutomatonSpecification();
 
-        spec.markAsInitial(q0);
-        spec.markAsFinal(q6);
+        State q0a = spec.addState();
+        State q1a = spec.addState();
+        State q2a = spec.addState();
+	State q3a = spec.addState();
+	State q4a = spec.addState();
+	State q5a = spec.addState();
+	State q6a = spec.addState();
+
+	spec.addTransition(q0a, q0a, new CharTransitionLabel('0'));
+        spec.addTransition(q0a, q1a, new CharTransitionLabel('1'));
+        spec.addTransition(q1a, q2a, new CharTransitionLabel('0'));
+        spec.addTransition(q2a, q2a, new CharTransitionLabel('0'));
+  	spec.addTransition(q0a, q3a, new CharTransitionLabel('5'));
+	spec.addTransition(q3a, q4a, new CharTransitionLabel('0'));
+        spec.addTransition(q0a, q5a, new CharTransitionLabel('2'));
+        spec.addTransition(q0a, q6a, new CharTransitionLabel('7'));
+        spec.addTransition(q5a, q5a, new CharTransitionLabel('5'));
+ 	spec.addTransition(q6a, q5a, new CharTransitionLabel('5'));
+
+        spec.markAsInitial(q0a);
+        spec.markAsFinal(q6a);
+
+        final DeterministicAutomaton automaton = new DeterministicAutomaton(spec);
 
         assertTrue(automaton.accepts("25"));
         assertTrue(automaton.accepts("50"));
@@ -435,6 +441,8 @@ public class TestDeterministicAutomaton extends TestCase {
         assertFalse(automaton.accepts("05"));
         assertFalse(automaton.accepts("121"));
         assertFalse(automaton.accepts("251"));
+	}
+
     }
 
 }
