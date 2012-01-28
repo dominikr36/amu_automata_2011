@@ -399,12 +399,12 @@ public class TestDeterministicAutomaton extends TestCase {
 
         spec.unmarkAsFinalState(q3c);
         assertTrue(spec.isFinal(q1c));
-        
+    }
                 
    /**
      * Test dla liczb podzielnych przez 25.
      */
-  public final void testAutomatonABC (){
+  public final void testAutomatonDivision (){
 
         DeterministicAutomatonSpecification divi = new aiveDeterministicAutomatonSpecification();
 
@@ -445,7 +445,5 @@ public class TestDeterministicAutomaton extends TestCase {
         assertFalse(divipotw.accepts("121"));
         assertFalse(divipotw.accepts("251"));
 	}
-
-    }
 
 }
