@@ -401,27 +401,27 @@ public class TestDeterministicAutomaton extends TestCase {
         assertTrue(spec.isFinal(q1c));
         
         //test 4
-        State q0d = spec.addState();
-        State q1d = spec.addState();
-        State q2d = spec.addState();
-        State q3d = spec.addState();
-	State q4d = spec.addState();
-	State q5d = spec.addState();
-	State q6d = spec.addState();
+        State q0 = spec.addState();
+        State q1 = spec.addState();
+        State q2 = spec.addState();
+        State q3 = spec.addState();
+	State q4 = spec.addState();
+	State q5 = spec.addState();
+	State q6 = spec.addState();
 
-	spec.addTransition(q0d, q0d, new CharTransitionLabel('0'));
-        spec.addTransition(q0d, q1d, new CharTransitionLabel('1'));
-        spec.addTransition(q1d, q2d, new CharTransitionLabel('0'));
-        spec.addTransition(q2d, q2d, new CharTransitionLabel('0'));
-    	spec.addTransition(q0d, q3d, new CharTransitionLabel('5'));
-    	spec.addTransition(q3d, q4d, new CharTransitionLabel('0'));
-        spec.addTransition(q0d, q5d, new CharTransitionLabel('2'));
-        spec.addTransition(q0d, q6d, new CharTransitionLabel('7'));
-        spec.addTransition(q5d, q5d, new CharTransitionLabel('5'));
-    	spec.addTransition(q6d, q5d, new CharTransitionLabel('5'));
+	spec.addTransition(q0, q0, new CharTransitionLabel('0'));
+        spec.addTransition(q0, q1, new CharTransitionLabel('1'));
+        spec.addTransition(q1, q2, new CharTransitionLabel('0'));
+        spec.addTransition(q2, q2, new CharTransitionLabel('0'));
+    	spec.addTransition(q0, q3, new CharTransitionLabel('5'));
+    	spec.addTransition(q3, q4, new CharTransitionLabel('0'));
+        spec.addTransition(q0, q5, new CharTransitionLabel('2'));
+        spec.addTransition(q0, q6, new CharTransitionLabel('7'));
+        spec.addTransition(q5, q5, new CharTransitionLabel('5'));
+    	spec.addTransition(q6, q5, new CharTransitionLabel('5'));
 
-        spec.markAsInitial(q0d);
-        spec.markAsFinal(q6d);
+        spec.markAsInitial(q0);
+        spec.markAsFinal(q6);
 
         assertTrue(automaton.accepts("25"));
         assertTrue(automaton.accepts("50"));
