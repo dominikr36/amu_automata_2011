@@ -486,48 +486,79 @@ public class TestDeterministicAutomaton extends TestCase {
         assertFalse(automaton.accepts("章"));
     }
 
-    /**
-     * Test na {a,b,c} akceptujacy slowa zaczynajace sie na a lub konczace na c.
+/**
+     * Test na automacie akceptującym liczby podzielne przez 25.
      */
-    public final void testSimpleAutomat() {
-
+     public final void testAutomatonAcceptingTwentyFive() {
         DeterministicAutomatonSpecification spec = new NaiveDeterministicAutomatonSpecification();
+        
         State q0 = spec.addState();
         State q1 = spec.addState();
         State q2 = spec.addState();
         State q3 = spec.addState();
+        State q4 = spec.addState();
+
+        spec.addTransition(q0, q0, new CharTransitionLabel('1'));
+        spec.addTransition(q0, q0, new CharTransitionLabel('3'));
+        spec.addTransition(q0, q0, new CharTransitionLabel('4'));
+        spec.addTransition(q0, q0, new CharTransitionLabel('6'));
+        spec.addTransition(q0, q0, new CharTransitionLabel('8'));
+        spec.addTransition(q0, q0, new CharTransitionLabel('9'));
+        spec.addTransition(q0, q1, new CharTransitionLabel('2'));
+        spec.addTransition(q0, q1, new CharTransitionLabel('7'));
+        spec.addTransition(q0, q2, new CharTransitionLabel('0'));
+        spec.addTransition(q0, q2, new CharTransitionLabel('5'));
+
+        spec.addTransition(q1, q1, new CharTransitionLabel('2'));
+        spec.addTransition(q1, q1, new CharTransitionLabel('7'));
+        spec.addTransition(q1, q0, new CharTransitionLabel('1'));
+        spec.addTransition(q1, q0, new CharTransitionLabel('3'));
+        spec.addTransition(q1, q0, new CharTransitionLabel('4'));
+        spec.addTransition(q1, q0, new CharTransitionLabel('6'));
+        spec.addTransition(q1, q1, new CharTransitionLabel('8'));
+        spec.addTransition(q1, q1, new CharTransitionLabel('9'));
+        spec.addTransition(q1, q2, new CharTransitionLabel('0'));
+        spec.addTransition(q1, q3, new CharTransitionLabel('5'));
+
+        spec.addTransition(q2, q2, new CharTransitionLabel('5'));
+        spec.addTransition(q2, q0, new CharTransitionLabel('1'));
+        spec.addTransition(q2, q0, new CharTransitionLabel('3'));
+        spec.addTransition(q2, q0, new CharTransitionLabel('4'));
+        spec.addTransition(q2, q0, new CharTransitionLabel('6'));
+        spec.addTransition(q2, q0, new CharTransitionLabel('8'));
+        spec.addTransition(q2, q0, new CharTransitionLabel('9'));
+        spec.addTransition(q2, q1, new CharTransitionLabel('2'));
+        spec.addTransition(q2, q1, new CharTransitionLabel('7'));
+        spec.addTransition(q2, q4, new CharTransitionLabel('0'));
+
+        spec.addTransition(q4, q4, new CharTransitionLabel('0'));
+        spec.addTransition(q4, q0, new CharTransitionLabel('1'));
+        spec.addTransition(q4, q0, new CharTransitionLabel('3'));
+        spec.addTransition(q4, q0, new CharTransitionLabel('4'));
+        spec.addTransition(q4, q0, new CharTransitionLabel('6'));
+        spec.addTransition(q4, q0, new CharTransitionLabel('8'));
+        spec.addTransition(q4, q0, new CharTransitionLabel('9'));
+        spec.addTransition(q4, q1, new CharTransitionLabel('7'));
+        spec.addTransition(q4, q1, new CharTransitionLabel('2'));
+        spec.addTransition(q4, q2, new CharTransitionLabel('5'));
 
         spec.markAsInitial(q0);
-        spec.markAsFinal(q1);
-        spec.markAsFinal(q3);
+        spec.markAsFinal(q4);
 
-        spec.addTransition(q0, q1, new CharTransitionLabel('a'));
-        spec.addLoop(q1, new CharTransitionLabel('a'));
-        spec.addLoop(q1, new CharTransitionLabel('b'));
-        spec.addLoop(q1, new CharTransitionLabel('c'));
-        spec.addTransition(q0, q2, new CharTransitionLabel('b'));
-        spec.addLoop(q2, new CharTransitionLabel('a'));
-        spec.addLoop(q2, new CharTransitionLabel('b'));
-        spec.addTransition(q2, q3, new CharTransitionLabel('c'));
-        spec.addTransition(q0, q3, new CharTransitionLabel('c'));
+        final DeterministicAutomaton automaton = new DeterministicAutomaton(spec);
 
-        AutomatonByRecursion automaton = new AutomatonByRecursion(spec);
-        assertTrue(automaton.accepts("c"));
-        assertFalse(automaton.accepts("bca"));
-        assertTrue(automaton.accepts("aa"));
-        assertTrue(automaton.accepts("ab"));
-        assertTrue(automaton.accepts("ac"));
-        assertFalse(automaton.accepts("b"));
-        assertFalse(automaton.accepts("bb"));
-        assertFalse(automaton.accepts("bab"));
-        assertTrue(automaton.accepts("bababc"));
-        assertFalse(automaton.accepts("bababc\n"));
-        assertFalse(automaton.accepts("d"));
-        assertFalse(automaton.accepts("cba"));
-        assertTrue(automaton.accepts("aaaaaaaaac"));
-        assertTrue(automaton.accepts("bbbbbbbbbc"));
-        assertFalse(automaton.accepts("cccccccccaaaaaa"));
-        assertFalse(automaton.accepts("aaaaaaaaaaaaaa bbbbbbbb"));
-        assertTrue(automaton.accepts("aaaaaabbbbbbbbbbbbbcccccccccccc"));
+        assertTrue(automaton.accepts("25"));
+        assertTrue(automaton.accepts("50"));
+        assertTrue(automaton.accepts("75"));
+        assertTrue(automaton.accepts("100"));
+        assertTrue(automaton.accepts("0125"));
+        assertTrue(automaton.accepts("025"));
+        assertTrue(automaton.accepts("025"));
+        assertFalse(automaton.accepts("00"));
+        assertFalse(automaton.accepts("123"));
+        assertFalse(automaton.accepts("05"));
+        assertFalse(automaton.accepts("121"));
+        assertFalse(automaton.accepts("251"));
     }
+
 }
